@@ -41,7 +41,7 @@ class _BottomNavAppBarState extends State<BottomNavAppBar> {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
             decoration: BoxDecoration(
-                color: AppColors.mainLight.withOpacity(0.40),
+                color: AppColors.mainColor,
                 borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(25),
                     topRight: Radius.circular(25))),
