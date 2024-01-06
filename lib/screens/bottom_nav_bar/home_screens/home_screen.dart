@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frgaa_app/screens/bottom_nav_bar/home_screens/Tabs/all_tabs.dart';
+import 'package:svg_flutter/svg.dart';
 
 import '../../../themes/app_colors.dart';
 import '../../../themes/app_textStyle.dart';
@@ -14,124 +15,95 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final List tabName=[
     'All',
-    'Fashion',
-    'Food',
-    'Gifts',
-    'Vegetables',
+    'Snacks',
+    'Meat',
+    'Oil',
+    'Fruits',
   ];
 
 int _currentIndex=0;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Container(
-          height: MediaQuery.sizeOf(context).height * 0.08,
-          width: double.infinity,
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-          decoration: BoxDecoration(
-              gradient: LinearGradient(colors: [
-                AppColors.greyColor.withOpacity(0.40),
-                AppColors.greyColor.withOpacity(0.40),
-              ]),
-              borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(10),
-                  bottomRight: Radius.circular(10))),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Text(
-                'Fargaa',
-                style: AppTextStyles.regularStyle
-                    .copyWith(color: AppColors.primaryBlack),
+
+              SvgPicture.asset('assets/images/home_screen/Group 3.svg'),
+              Spacer(),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text('Select',style: AppTextStyles.semiBoldStyle.copyWith(color: Color(0xffA6A8B7)),),
+                  SizedBox(width: 5,),
+                  Icon(Icons.keyboard_arrow_down,color: Color(0xffA6A8B7),)
+                ],
               ),
-    const SizedBox(width: 10,),
-              Expanded(
-                child: Container(
-                  height: 52,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(25),
-                    boxShadow: [
-                      BoxShadow(
-                        color: AppColors.primaryBlack.withOpacity(0.10),
-                        offset: const Offset(0, 2),
-                        blurRadius: 4,
-                      ),
-                    ],
-                  ),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      contentPadding: const EdgeInsets.only(left: 10),
-                      prefixIcon: Icon(Icons.search, color: AppColors.primaryBlack.withOpacity(0.40)),
-                     hintText: 'Search For Item',
-                      hintStyle: const TextStyle(color: Color(0xf7000000)),
-                      filled: true,
-                      fillColor: Colors.white,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                        borderSide: BorderSide.none,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(width: 10,),
-              const Icon(
-                Icons.shopping_cart,
-                color: AppColors.primaryBlack,
-              ),
+              Spacer(),
+            Image(image: AssetImage("assets/images/home_screen/logo.png")),
 
             ],
           ),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
+          SizedBox(height: 15,),
 
-       Padding(
-         padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
-         child: Column(
-           crossAxisAlignment: CrossAxisAlignment.start,mainAxisAlignment: MainAxisAlignment.start,
-           children: [
-           SingleChildScrollView(
-             scrollDirection: Axis.horizontal,
-             child: Row(
-               children: List.generate(tabName.length, (index) {
-                 return GestureDetector(
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text('FMCG',style: AppTextStyles.mediumStyle.copyWith(color: AppColors.mainColor,)),
+              SizedBox(width: 5,),
+              Icon(Icons.keyboard_arrow_down,color: Color(0xffA6A8B7),)
 
-                   onTap: (){
-                     setState(() {
-                       _currentIndex=index;
-                     });
-                   },
-                   child: Container(
-                     alignment: Alignment.center
-                     ,
-                     margin: const EdgeInsets.only(right: 10),
-                     padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
-                     decoration: BoxDecoration(
-                       borderRadius: BorderRadius.circular(10),
-                       color: _currentIndex==index?AppColors.mainColor.withOpacity(0.30):Colors.grey.shade200,
+            ],
+          ),
+          SizedBox(height: 3,),
+          Divider(thickness: 3,height: 3,color: AppColors.blueColor,),
+          SizedBox(height: 15,),
 
+         Padding(
+           padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
+           child: Column(
+             crossAxisAlignment: CrossAxisAlignment.start,mainAxisAlignment: MainAxisAlignment.start,
+             children: [
+             SingleChildScrollView(
+               scrollDirection: Axis.horizontal,
+               child: Row(
+                 children: List.generate(tabName.length, (index) {
+                   return GestureDetector(
+
+                     onTap: (){
+                       setState(() {
+                         _currentIndex=index;
+                       });
+                     },
+                     child: Container(
+                       alignment: Alignment.center
+                       ,
+                       margin: const EdgeInsets.only(right: 10),
+                       padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 5),
+                       decoration: BoxDecoration(
+                         borderRadius: BorderRadius.circular(10),
+                         color: _currentIndex==index?AppColors.blueColor:Colors.transparent,
+
+                       ),
+                       child: Text(tabName[index],style: AppTextStyles.regularStyle.copyWith(color: _currentIndex==index?AppColors.primaryWhite:AppColors.mainColor),),
                      ),
-                     child: Text(tabName[index],style: AppTextStyles.regularStyle.copyWith(color: _currentIndex==index?Colors.black:Colors.white),),
-                   ),
-                 );
-               }),
+                   );
+                 }),
+               ),
              ),
-           ),
-         ],),
-       ),
+           ],),
+         ),
 
-        Expanded(child: SingleChildScrollView(child: Padding(
+          Expanded(child: SingleChildScrollView(
+              child: _currentIndex==0?const AllTabs():Container()))
 
-          padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
-          child: _currentIndex==0?const AllTabs():Container(),
-        )))
-
-      ],
+        ],
+      ),
     );
   }
 }
