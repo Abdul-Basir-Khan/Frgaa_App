@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:frgaa_app/screens/bottom_nav_bar/home_screens/Tabs/all_tabs.dart';
-import 'package:svg_flutter/svg.dart';
-
 import '../../../themes/app_colors.dart';
 import '../../../themes/app_textStyle.dart';
 class HomeScreen extends StatefulWidget {
@@ -34,7 +32,7 @@ int _currentIndex=0;
             crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.start,
             children: [
 
-              SvgPicture.asset('assets/images/home_screen/Group 3.svg'),
+             const Icon(Icons.shopping_cart_outlined,size: 30,color: Color(0xffA6A8B7),),
               const Spacer(),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,

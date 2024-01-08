@@ -35,7 +35,7 @@ class _ProductDescriptionState extends State<ProductDescription> {
                 crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.start,
                 children: [
 
-                  SvgPicture.asset('assets/images/home_screen/Group 3.svg'),
+                  const Icon(Icons.shopping_cart_outlined,size: 30,color: Color(0xffA6A8B7),),
                   const Spacer(),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,

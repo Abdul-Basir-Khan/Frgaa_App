@@ -39,16 +39,8 @@ class _AllTabsState extends State<AllTabs> {
     'assets/images/home_screen/pp1.png',
     'assets/images/home_screen/pp2.png',
     'assets/images/home_screen/pp1.png',
-  ];
-  final List images = [
-    'assets/images/home_screen/p1.png',
-    'assets/images/home_screen/p2.png',
-    'assets/images/home_screen/p3.png',
-    'assets/images/home_screen/p4.png',
-    'assets/images/home_screen/p3.png',
-    'assets/images/home_screen/p4.png',
-    'assets/images/home_screen/p1.png',
-    'assets/images/home_screen/p2.png',
+    'assets/images/home_screen/pp2.png',
+    'assets/images/home_screen/pp1.png',
   ];
   final List brandList = [
     'assets/images/home_screen/Ellipse 5.png',
@@ -101,14 +93,20 @@ class _AllTabsState extends State<AllTabs> {
           height: 15,
         ),
         SizedBox(
-          height: MediaQuery.sizeOf(context).height * 0.15,
+          height: MediaQuery
+              .sizeOf(context)
+              .height * 0.15,
           child: PageView.builder(
             controller: controller,
             itemCount: adsImages.length,
             itemBuilder: (BuildContext context, int index) {
               return Container(
-                height: MediaQuery.sizeOf(context).height * 0.15,
-                width: MediaQuery.sizeOf(context).width * 0.80,
+                height: MediaQuery
+                    .sizeOf(context)
+                    .height * 0.15,
+                width: MediaQuery
+                    .sizeOf(context)
+                    .width * 0.80,
                 margin: const EdgeInsets.only(right: 10),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
@@ -152,7 +150,7 @@ class _AllTabsState extends State<AllTabs> {
                     context,
                     MaterialPageRoute(
                         builder: (context) =>
-                          CategoryScreen()));
+                        const CategoryScreen()));
               },
 
               child: Text(
@@ -172,14 +170,14 @@ class _AllTabsState extends State<AllTabs> {
           padding: EdgeInsets.zero,
           itemCount: name.length,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              childAspectRatio: 0.68,
-              crossAxisCount: 4,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10),
+            childAspectRatio: 0.52,
+            crossAxisCount: 3,
+            crossAxisSpacing: 10, mainAxisSpacing: 10,
+          ),
           itemBuilder: (BuildContext context, int index) {
             return Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 GestureDetector(
                     onTap: () {
@@ -187,19 +185,43 @@ class _AllTabsState extends State<AllTabs> {
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                const ProductDescription()));
+                              const ProductDescription()));
                     },
-                    child: Image(image: AssetImage(images[index].toString()))),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Image(
+                            height: 120, width: 65,
+                            fit: BoxFit.fitHeight,
+                            image: AssetImage(popularImages[index].toString())),
+                        const SizedBox(width: 5,),
+                        CircleAvatar(
+                          radius: 15,
+                          backgroundColor: AppColors.blueColor.withOpacity(
+                              0.50),
+                          child: const Icon(
+                            Icons.add, color: AppColors.primaryWhite,),
+                        )
+
+                      ],
+                    )),
+
                 Text(
                   name[index].toString(),
-                  style: AppTextStyles.semiBoldStyle
-                      .copyWith(color: const Color(0xff828282)),
+                  style: AppTextStyles.mediumStyle
+                      .copyWith(color: const Color(0xff828282), fontSize: 10),
                 ),
                 Text(
                   'All type pure ${name[index]} is available here',
+
+                  style: AppTextStyles.mediumStyle
+                      .copyWith(color: const Color(0xffA6A8B7), fontSize: 10),
+                ),
+                Text(
+                  '\$2.43',
                   textAlign: TextAlign.center,
                   style: AppTextStyles.mediumStyle
-                      .copyWith(color: const Color(0xffA6A8B7), fontSize: 7),
+                      .copyWith(color: const Color(0xffA6A8B7), fontSize: 10),
                 ),
               ],
             );
@@ -221,7 +243,8 @@ class _AllTabsState extends State<AllTabs> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: List.generate(
                   brandName.length,
-                  (index) => Padding(
+                      (index) =>
+                      Padding(
                         padding: const EdgeInsets.only(right: 20),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -274,8 +297,8 @@ class _AllTabsState extends State<AllTabs> {
           height: 10,
         ),
         SizedBox(
-          height: 300,
-          child: ListView.builder(
+          height: 270,
+          child: ListView.separated(
             padding: EdgeInsets.zero,
             clipBehavior: Clip.none,
             shrinkWrap: true,
@@ -285,80 +308,90 @@ class _AllTabsState extends State<AllTabs> {
               return
 
                 Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Image(
+                        height: 120,
+                        width: 120,
+                        fit: BoxFit.cover,
+                        image: AssetImage(popularImages[index].toString())),
+                    Text(
+                      name[index].toString(),
+                      style: AppTextStyles.semiBoldStyle
+                          .copyWith(color: const Color(0xff828282),
+                          fontSize: 10),
+                    ),
+                    const SizedBox(
+                      height: 3,
+                    ),
+                    Text(
+                      'All type pure ${name[index]}\nis available here',
+
+                      style: AppTextStyles.mediumStyle
+                          .copyWith(
+                          color: const Color(0xffA6A8B7), fontSize: 7),
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      'SHA-RMZ-1000',
+                      textAlign: TextAlign.center,
+                      style: AppTextStyles.mediumStyle
+                          .copyWith(color: AppColors.blueColor, fontSize: 6),
+                    ),
+                    Text(
+                      'Loc: Saray Store',
+                      textAlign: TextAlign.center,
+                      style: AppTextStyles.mediumStyle
+                          .copyWith(
+                          color: const Color(0xffA6A8B7), fontSize: 7),
+                    ),
+                    Text(
+                      'SDG 26',
+                      style: AppTextStyles.semiBoldStyle
+                          .copyWith(
+                          color: const Color(0xff484848), fontSize: 9),
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Container(
+                      width: 70,
+                      height: 20,
+                      decoration: ShapeDecoration(
+                        shape: RoundedRectangleBorder(
+                          side: const BorderSide(color: AppColors.blueColor),
+                          borderRadius: BorderRadius.circular(3),
+                        ),
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Add to cart',
+                          style: AppTextStyles.semiBoldStyle
+                              .copyWith(
+                              color: AppColors.blueColor, fontSize: 7),
+                        ),
+                      ),
+                    )
+                  ],
+                );
+            },
+            separatorBuilder: (BuildContext context, int index) {
+              return Row(
                 children: [
-                  Image(
-                      height: 120,
-                      width: 120,
-                      image: AssetImage(popularImages[index].toString())),
-                  Text(
-                    name[index].toString(),
-                    style: AppTextStyles.semiBoldStyle
-                        .copyWith(color: const Color(0xff828282)),
+                  VerticalDivider(
+                    thickness: 1, color: AppColors.greyColor.shade100, width: 1,
                   ),
-                  const SizedBox(
-                    height: 3,
-                  ),
-                  Text(
-                    'All type pure ${name[index]}\nis available here',
-                    textAlign: TextAlign.center,
-                    style: AppTextStyles.mediumStyle
-                        .copyWith(color: const Color(0xffA6A8B7), fontSize: 7),
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Text(
-                    'SHA-RMZ-1000',
-                    textAlign: TextAlign.center,
-                    style: AppTextStyles.mediumStyle
-                        .copyWith(color: AppColors.blueColor, fontSize: 6),
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Text(
-                    'Additional\ninformation here',
-                    textAlign: TextAlign.center,
-                    style: AppTextStyles.mediumStyle
-                        .copyWith(color: const Color(0xffA6A8B7), fontSize: 7),
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Text(
-                    'SDG 26',
-                    style: AppTextStyles.semiBoldStyle
-                        .copyWith(color: const Color(0xff484848), fontSize: 9),
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Container(
-                    width: 70,
-                    height: 20,
-                    decoration: ShapeDecoration(
-                      shape: RoundedRectangleBorder(
-                        side: const BorderSide(color: AppColors.blueColor),
-                        borderRadius: BorderRadius.circular(3),
-                      ),
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Add to cart',
-                        style: AppTextStyles.semiBoldStyle
-                            .copyWith(color: AppColors.blueColor, fontSize: 7),
-                      ),
-                    ),
-                  )
+                  const SizedBox(width: 10,)
                 ],
               );
             },
           ),
         ),
         const SizedBox(
-          height: 20,
+          height: 10,
         ),
       ],
     );

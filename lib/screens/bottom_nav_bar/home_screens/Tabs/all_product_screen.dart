@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:frgaa_app/themes/app_colors.dart';
-import 'package:svg_flutter/svg.dart';
-
 import '../../../../themes/app_textStyle.dart';
 
 class AllProductsScreen extends StatelessWidget {
@@ -43,7 +41,7 @@ class AllProductsScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.start,
             children: [
 
-              SvgPicture.asset('assets/images/home_screen/Group 3.svg'),
+              const Icon(Icons.shopping_cart_outlined,size: 30,color: Color(0xffA6A8B7),),
               const Spacer(),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -53,7 +51,7 @@ class AllProductsScreen extends StatelessWidget {
                   const Icon(Icons.keyboard_arrow_down,color: Color(0xffA6A8B7),)
                 ],
               ),
-              const Spacer(),Icon(Icons.arrow_forward,color: Color(0xffAFAFAF),),
+              const Spacer(),const Icon(Icons.arrow_forward,color: Color(0xffAFAFAF),),
 
             ],
           ),
@@ -96,48 +94,48 @@ class AllProductsScreen extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Icon(Icons.filter_alt_outlined,color: AppColors.mainColor,),
+                    const Icon(Icons.filter_alt_outlined,color: AppColors.mainColor,),
 
                     Text('Filters',style: AppTextStyles.mediumStyle.copyWith(color: const Color(0xff828282),fontSize: 11),),
 
-                    Icon(Icons.keyboard_arrow_down,color:Color(0xffA6A8B7),)
+                    const Icon(Icons.keyboard_arrow_down,color:Color(0xffA6A8B7),)
 
                   ],
                 ),
-                SizedBox(width: 10,),
+                const SizedBox(width: 10,),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text('Short By',style: AppTextStyles.mediumStyle.copyWith(color: const Color(0xff828282),fontSize: 11),),
-                    SizedBox(width: 5,),
-                    Icon(Icons.keyboard_arrow_down,color:Color(0xffA6A8B7),)
+                    const SizedBox(width: 5,),
+                    const Icon(Icons.keyboard_arrow_down,color:Color(0xffA6A8B7),)
 
                   ],
                 ),
-                SizedBox(width: 10,),
+                const SizedBox(width: 10,),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text('By Category',style: AppTextStyles.mediumStyle.copyWith(color: const Color(0xff828282),fontSize: 11),),
-                    SizedBox(width: 5,),
-                    Icon(Icons.keyboard_arrow_down,color:Color(0xffA6A8B7),)
+                    const SizedBox(width: 5,),
+                    const Icon(Icons.keyboard_arrow_down,color:Color(0xffA6A8B7),)
 
                   ],
                 ),
-                SizedBox(width: 10,),
+                const SizedBox(width: 10,),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text('By Brand',style: AppTextStyles.mediumStyle.copyWith(color: const Color(0xff828282),fontSize: 11),),
-                    SizedBox(width: 5,),
-                    Icon(Icons.keyboard_arrow_down,color:Color(0xffA6A8B7),)
+                    const SizedBox(width: 5,),
+                    const Icon(Icons.keyboard_arrow_down,color:Color(0xffA6A8B7),)
 
                   ],
                 ),
               ],
             ),
           ),
-          SizedBox(height: 15,),
+          const SizedBox(height: 15,),
           Text('Products',style: AppTextStyles.mediumStyle.copyWith(color: const Color(0xff828282),fontSize: 16),),
 
           Expanded(
@@ -145,13 +143,13 @@ class AllProductsScreen extends StatelessWidget {
               scrollDirection: Axis.vertical,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,mainAxisAlignment: MainAxisAlignment.start,children: [
-               SizedBox(height: 10,),
+               const SizedBox(height: 10,),
                 GridView.builder(
                   shrinkWrap: true,itemCount: name.length,
-                  padding: EdgeInsets.zero,physics: NeverScrollableScrollPhysics(),
-                  gridDelegate:SliverGridDelegateWithFixedCrossAxisCount(
+                  padding: EdgeInsets.zero,physics: const NeverScrollableScrollPhysics(),
+                  gridDelegate:const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,crossAxisSpacing: 10,
-                      childAspectRatio: 0.63
+                      childAspectRatio: 0.69
                   ), itemBuilder: (BuildContext context, int index) { return  Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -159,18 +157,20 @@ class AllProductsScreen extends StatelessWidget {
                     Image(
                         height: 120,
                         width: 120,
+                        fit: BoxFit.cover,
                         image: AssetImage(popularImages[index].toString())),
                     Text(
                       name[index].toString(),
                       style: AppTextStyles.semiBoldStyle
-                          .copyWith(color: const Color(0xff828282)),
+                          .copyWith(color: const Color(0xff828282),
+                          fontSize: 10),
                     ),
                     const SizedBox(
                       height: 3,
                     ),
                     Text(
                       'All type pure ${name[index]}\nis available here',
-                      textAlign: TextAlign.center,
+
                       style: AppTextStyles.mediumStyle
                           .copyWith(color: const Color(0xffA6A8B7), fontSize: 7),
                     ),
@@ -183,17 +183,11 @@ class AllProductsScreen extends StatelessWidget {
                       style: AppTextStyles.mediumStyle
                           .copyWith(color: AppColors.blueColor, fontSize: 6),
                     ),
-                    const SizedBox(
-                      height: 5,
-                    ),
                     Text(
-                      'Additional\ninformation here',
+                      'Loc: Saray Store',
                       textAlign: TextAlign.center,
                       style: AppTextStyles.mediumStyle
                           .copyWith(color: const Color(0xffA6A8B7), fontSize: 7),
-                    ),
-                    const SizedBox(
-                      height: 5,
                     ),
                     Text(
                       'SDG 26',
