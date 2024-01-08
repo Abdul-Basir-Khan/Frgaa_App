@@ -35,34 +35,34 @@ int _currentIndex=0;
             children: [
 
               SvgPicture.asset('assets/images/home_screen/Group 3.svg'),
-              Spacer(),
+              const Spacer(),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text('Select',style: AppTextStyles.semiBoldStyle.copyWith(color: Color(0xffA6A8B7)),),
-                  SizedBox(width: 5,),
-                  Icon(Icons.keyboard_arrow_down,color: Color(0xffA6A8B7),)
+                  Text('Select',style: AppTextStyles.semiBoldStyle.copyWith(color: const Color(0xffA6A8B7)),),
+                  const SizedBox(width: 5,),
+                  const Icon(Icons.keyboard_arrow_down,color: Color(0xffA6A8B7),)
                 ],
               ),
-              Spacer(),
-            Image(image: AssetImage("assets/images/home_screen/logo.png")),
+              const Spacer(),
+              const Image(image: AssetImage("assets/images/home_screen/logo.png")),
 
             ],
           ),
-          SizedBox(height: 15,),
+          const SizedBox(height: 15,),
 
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text('FMCG',style: AppTextStyles.mediumStyle.copyWith(color: AppColors.mainColor,)),
-              SizedBox(width: 5,),
-              Icon(Icons.keyboard_arrow_down,color: Color(0xffA6A8B7),)
+              const SizedBox(width: 5,),
+              const Icon(Icons.keyboard_arrow_down,color: Color(0xffA6A8B7),)
 
             ],
           ),
-          SizedBox(height: 3,),
-          Divider(thickness: 3,height: 3,color: AppColors.blueColor,),
-          SizedBox(height: 15,),
+          const SizedBox(height: 3,),
+          const Divider(thickness: 3,height: 3,color: AppColors.blueColor,),
+          const SizedBox(height: 15,),
 
          Padding(
            padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),

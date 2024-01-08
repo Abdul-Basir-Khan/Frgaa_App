@@ -77,7 +77,7 @@ class _BottomNavAppBarState extends State<BottomNavAppBar> {
                   AppColors.mainBold
                       : AppColors.mainColor,
 
-                  icon: 'assets/images/nav_bar/Vector (1).svg',
+                  icon: 'assets/images/nav_bar/search.svg',
                 ),
                 BottomTab(
                   onTap: () {
